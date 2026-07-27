@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acceso a la app — KiloPan</title>
+<meta name="description" content="Cómo entrar a KiloPan en producción: vincular tu equipo, ingresar con RUT y PIN, y recorrer la app en 3 minutos.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5.25' fill='%23D97706'/%3E%3Cpath d='M12 4v14M8.5 20h7M6 8h12M6 8L4 12.2a2.5 2.5 0 0 0 5 0L7 8M18 8l2 4.2a2.5 2.5 0 0 1-5 0L17 8' stroke='%23fff' stroke-width='1.9' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--amber:#F5A623;--amber-d:#D97706;--txt:#eef1f3;--mut:#9aa4ac;--mut2:#7c868e}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;color:var(--txt);
+  background:linear-gradient(158deg,#0c0f11 0%,#131719 46%,#0a0d0e 100%);min-height:100vh}
+.bg{position:fixed;inset:0;pointer-events:none;z-index:0;background:
+  radial-gradient(1100px 700px at 78% 8%, rgba(217,119,6,.14), transparent 62%),
+  radial-gradient(900px 620px at 12% 92%, rgba(245,166,35,.07), transparent 60%)}
+.wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 22px 60px}
+header{display:flex;align-items:center;gap:14px;padding:34px 0 6px}
+.mark{width:46px;height:46px;border-radius:12px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,#D97706,#B45309);box-shadow:0 10px 26px rgba(217,119,6,.35)}
+.mark svg{width:28px;height:28px}
+.word{font-size:27px;font-weight:800;letter-spacing:-.02em}
+.word b{color:var(--amber)}
+header a{margin-left:auto;color:var(--mut);text-decoration:none;font-size:14.5px}
+h1{font-size:clamp(30px,5vw,44px);line-height:1.1;font-weight:800;letter-spacing:-.02em;margin:34px 0 12px;
+  background:linear-gradient(180deg,#ffffff 30%,#c3cad0 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 .acc{background:linear-gradient(90deg,#F5A623,#FFD08A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:17.5px;line-height:1.55;color:var(--mut)}
+.lead b{color:#d6dde2;font-weight:600}
+.btnrow{display:flex;gap:14px;flex-wrap:wrap;margin:26px 0 8px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:16px 28px;border-radius:13px;font-size:17px;font-weight:700;
+  text-decoration:none;transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.pri{color:#fff;background:linear-gradient(180deg,#E8871E,#C86E0A);box-shadow:0 10px 26px rgba(217,119,6,.35)}
+.btn svg{width:19px;height:19px;stroke:currentColor}
+.note{font-size:13.5px;color:var(--mut2);margin:10px 0 34px}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:24px;margin:16px 0}
+.card h2{font-size:19px;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.card h2 .n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;margin-right:10px;
+  background:linear-gradient(180deg,rgba(217,119,6,.2),rgba(217,119,6,.07));border:1px solid rgba(245,166,35,.3);color:var(--amber);font-size:16px}
+.card p,.card li{font-size:15.5px;line-height:1.6;color:var(--mut)}
+.card b{color:#d6dde2;font-weight:600}
+.card ol{padding-left:20px;margin-top:6px}
+.tip{border-left:3px solid rgba(245,166,35,.5);padding:2px 0 2px 14px;margin-top:12px;font-size:14px;color:var(--mut2)}
+footer{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding:24px 0 0;text-align:center;
+  font-size:13.5px;color:var(--mut2);line-height:1.7}
+footer a{color:#c9b48a;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="wrap">
+
+<header>
+  <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v14M8.5 20h7M6 8h12M6 8L4 12.2a2.5 2.5 0 0 0 5 0L7 8M18 8l2 4.2a2.5 2.5 0 0 1-5 0L17 8"/></svg></div>
+  <div class="word">Kilo<b>Pan</b></div>
+  <a href="index.html">← Volver al sitio</a>
+</header>
+
+<h1>Entrar a la app, <span class="acc">paso a paso</span></h1>
+<p class="lead">KiloPan está corriendo en producción, en modo <b>MVP</b>. Funciona en tu teléfono y en
+cualquier navegador, sin instalar nada. Para operar necesitas las <b>credenciales (RUT y PIN)
+que te entregamos</b> — si aún no las tienes, escríbenos a
+<a href="mailto:a.rodriguez@e-auto.global" style="color:#F5A623">a.rodriguez@e-auto.global</a>.</p>
+
+<div class="btnrow">
+  <a class="btn pri" href="https://kilopan-app-production.up.railway.app">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    Abrir KiloPan ahora</a>
+</div>
+<p class="note">Se abre en este mismo aparato — teléfono o computador, da lo mismo.</p>
+
+<div class="card">
+  <h2><span class="n">1</span>Vincula tu equipo (una sola vez)</h2>
+  <p>La primera vez, la app pide <b>«vincular este equipo»</b>. Es la seguridad de la puerta:
+  ninguna pantalla queda abierta a extraños, y un aparato perdido se puede revocar.</p>
+  <ol>
+    <li>Escribe un nombre para tu aparato (por ejemplo, «iPhone Rafael») y toca <b>Continuar</b>.</li>
+    <li>Escribe el <b>RUT</b> y el <b>PIN</b> que te entregamos y toca <b>Vincular equipo</b>.</li>
+  </ol>
+  <p class="tip">Esto se hace una sola vez por teléfono o computador. Después, la app va directo al ingreso.</p>
+</div>
+
+<div class="card">
+  <h2><span class="n">2</span>Ingresa con tu RUT y PIN</h2>
+  <p>El mismo RUT y PIN de arriba. Teclado grande, pensado para manos con harina: tres segundos.</p>
+  <p class="tip">Si entras con la misma clave en otro aparato, la sesión anterior se cierra sola —
+  en KiloPan las claves no se prestan. Volver a entrar es un toque.</p>
+</div>
+
+<div class="card">
+  <h2><span class="n">3</span>Recórrela en 3 minutos</h2>
+  <ol>
+    <li><b>Pesa una bandeja</b> — Menú → Pesaje → Marraqueta → teclea <b>1,5</b> → destino
+    «Mostrador» → Confirmar. Ese kilo quedó escrito con tu nombre y hora. (Prueba un peso
+    absurdo: la app te va a preguntar antes de aceptarlo.)</li>
+    <li><b>Vende en el mesón</b> — Menú → Venta mostrador → Marraqueta → 1,5 → Agregar →
+    Efectivo → Cobrar. Pesos exactos, y el stock baja al instante.</li>
+    <li><b>Mira el Panel del dueño</b> — la Tasa de Conciliación de Kilos responde la pregunta
+    que vale plata: ¿cuánto del pan horneado está explicado?</li>
+  </ol>
+  <p class="tip">Con perfil de administrador también puedes ver <b>Despacho</b> (pedidos con su guía
+  amarrada — sin documento, el furgón no sale) y <b>Ajustes</b> (personal, precios y medios de pago).</p>
+</div>
+
+<div class="card">
+  <h2><span class="n">☆</span>Déjala como app en tu teléfono</h2>
+  <p>Con KiloPan abierta en el navegador del teléfono: <b>Compartir → Agregar a pantalla de inicio</b>
+  (iPhone) o <b>menú ⋮ → Agregar a pantalla principal</b> (Android). Queda con su ícono, como
+  cualquier app.</p>
+</div>
+
+<footer>
+  <b style="color:#b8c1c8">KiloPan</b> — el pan es tuyo, el control también.<br>
+  Avance MVP en producción · julio 2026 · Un producto de E-Auto Global SpA ·
+  <a href="mailto:a.rodriguez@e-auto.global">a.rodriguez@e-auto.global</a>
+</footer>
+
+</div>
+</body>
+</html>
+
